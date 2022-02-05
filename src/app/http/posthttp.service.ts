@@ -11,7 +11,8 @@ export class PostHttpService {
     constructor(private http: HttpClient) { }
 
     fetchData() {
-        return this.http.get<{ [key: string]: Post }>('https://recipie-app-d9bea-default-rtdb.firebaseio.com/posts.json')
+        return this.http.get<{ [key: string]: Post }>
+            ('https://recipie-app-d9bea-default-rtdb.firebaseio.com/posts.json')
             .pipe(map((responseData) => {
                 const postsArray: Post[] = [];
                 for (let key in responseData) {
@@ -19,16 +20,16 @@ export class PostHttpService {
                 }
                 return postsArray;
             }));
-
     }
 
-    sendData(): void {
-        const postDetails = { title: "Trending Tech", content: "Lorem Ipsum" }
-        this.http.
-            post<{ name: string }>('https://recipie-app-d9bea-default-rtdb.firebaseio.com/posts.json', postDetails).
-            subscribe((respData) => {
-                console.log(respData);
-            });
+    sendData() {
+        const postDetails = { title: "Not So trending Tech", content: "Lorem Ipsum" }
+        return this.http.
+            post<{ name: string }>('https://recipie-app-d9bea-default-rtdb.firebaseio.com/posts.json', postDetails);
     }
 
+    clearPost() {
+        return this.http.
+            delete(`https://recipie-app-d9bea-default-rtdb.firebaseio.com/posts.json/`);
+    }
 }

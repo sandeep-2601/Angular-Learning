@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PostHttpService } from './posthttp.service';
 import { Post } from './posts.model';
 @Component({
@@ -11,7 +11,7 @@ export class HttpComponent implements OnInit {
   posts: Post[] = [];
   isFetching: boolean = false;
 
-  constructor(private postHttp: PostHttpService) { }
+  constructor(private httpService: PostHttpService) { }
 
   ngOnInit(): void {
     this.onFetchData();
@@ -19,14 +19,19 @@ export class HttpComponent implements OnInit {
 
   onFetchData(): void {
     this.isFetching = true;
-    this.postHttp.fetchData().subscribe((posts) => {
+    this.httpService.fetchData().subscribe((posts) => {
       this.posts = posts;
-    })
+    });
     this.isFetching = false;
   }
 
   onSendData(): void {
-    this.postHttp.sendData();
+    this.httpService.sendData().
+    subscribe(()=>this.onFetchData());
+  }
+
+  onClearPosts(): void {
+    this.httpService.clearPost().subscribe(()=>{this.posts=[]});
   }
 
 }

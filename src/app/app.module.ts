@@ -33,6 +33,7 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { FormsAssignmentComponent } from './forms-assignment/forms-assignment';
 import { HttpComponent } from './http/http.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ObservablesComponent } from './observables/observables.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsComponent,
     ReactiveFormsComponent,
     FormsAssignmentComponent,
-    HttpComponent
+    HttpComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
