@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row" style="border: 1px solid palegoldenrod;">
+        <div class="col-xs-12">
+            <h1 class="text-primary">{{account.name}}</h1>
+            <hr>
+            <p>The account is {{account.status}}</p>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <button class="btn btn-danger" style="margin-left: 10px;margin-right: 10px;"
+                (click)="onStatusChange('inactive')">Set as Inactive</button>
+            <button class="btn btn-success" style="margin-right: 10px;" (click)="onStatusChange('active')">Set as Active
+            </button>
+            <button class="btn btn-warning" (click)="onStatusChange('unknown')">Set as Unknown</button>
+        </div>
+    </div>
+    <br>
+</div>

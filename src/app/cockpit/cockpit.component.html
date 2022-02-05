@@ -1,0 +1,17 @@
+<div class="container">
+    <p class="text-primary">Add new servers or blueprints</p>
+    <div class="form-group">
+        <label for="name">Server Name</label>
+        <input type="text" class="form-control" [(ngModel)]="serverName" id="name" name="name">
+        <label for="content">Server Content</label>
+        <input type="text" class="form-control" [(ngModel)]="serverContent" id="content" name="server">
+        <!--    Local Referencing
+             you can use #name in a html tag and can pass it to a function instead of using a two way databinding as coded below
+        -->
+        <input type="text" name="name" #refName>
+    </div>
+    <!-- A dummy button to demonstrate local referencing and viewchild -->
+    <!-- <button class="btn btn-primary" (click)="dummyFunction(refName);viewChildDummyFunction()">Dummy button</button> -->
+    <button class="btn btn-primary" (click)="addServer($event)">Add Server</button>
+    <button class="btn btn-primary" (click)="addServer($event)">Add Blueprint</button>
+</div>

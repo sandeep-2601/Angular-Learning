@@ -1,0 +1,2 @@
+<p *ngIf="status==='offline' else elseComponent" [ngStyle]="{backgroundColor:getColor()}">{{'server'}} {{getServerId()}} is {{status}}</p>
+<ng-template #elseComponent><p [ngClass] = "{online:status=='online'}">{{'server'}} {{getServerId()}} is {{status}} </p></ng-template> <!-- local reference referenced in in the line 1 -->

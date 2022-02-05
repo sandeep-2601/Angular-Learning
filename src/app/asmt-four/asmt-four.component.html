@@ -1,0 +1,4 @@
+<h1 class="text-success">Active Users</h1>
+<app-active-users *ngFor="let active of activeUsers" [activeUser]="active"></app-active-users>
+<h1 class="text-danger">Inactive Users</h1>
+<app-inactive-users *ngFor="let inactive of inactiveUsers" [inactiveUser]="inactive"></app-inactive-users>

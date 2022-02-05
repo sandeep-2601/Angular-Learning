@@ -1,0 +1,16 @@
+<div class="container" >
+    <div class="row">
+        <div class="col-xs-6">
+            <div *ngFor="let server of servers">
+                <div style="border:1px solid blanchedalmond;height:50px">
+                    <a [routerLink]="['/servers',server.id]" class="text-primary">
+                        {{server.name}} - {{server.status}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

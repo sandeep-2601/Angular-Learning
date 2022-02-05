@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div *ngFor="let user of users">
+                <div style="border:1px solid palegoldenrod;height:50px;">
+                    <a class="text-primary" [routerLink]="['/users',user.id - 1]"
+                        style="cursor:pointer;">{{user.name}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

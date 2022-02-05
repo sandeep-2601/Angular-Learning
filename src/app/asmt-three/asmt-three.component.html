@@ -1,0 +1,17 @@
+<div>
+    <button class="btn btn-primary" (click)="onDisplay()">Display Details</button>
+    <p [ngStyle]="{display:display,color:'blue'}">Secret Password = 'Tuna'</p>
+    <div *ngFor="let server of servers; let idx=index">
+       <p *ngIf="idx<=5 else defaultStyle" >"server" - {{server}}</p>
+        <ng-template #defaultStyle>
+            <p [ngStyle]="{backgroundColor:'blue',color:'white'}">"server" - {{server}}</p>
+        </ng-template>
+    </div>
+
+    <!-- optimized solution -->
+
+    <!-- <div *ngFor="let server of servers">
+        <p [ngStyle]="{backgroundColor:server>5?'blue':'white'}" [ngClass]="{'text-color':server>5}">{{"server"}} - {{server}}</p>
+    </div> -->
+
+</div>
