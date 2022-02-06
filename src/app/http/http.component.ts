@@ -7,8 +7,9 @@ import { Post } from './posts.model';
   styleUrls: ['./http.component.css']
 })
 export class HttpComponent implements OnInit {
-
+  clicked: boolean = false;
   posts: Post[] = [];
+  error: string = null;
   isFetching: boolean = false;
 
   constructor(private httpService: PostHttpService) { }
@@ -17,12 +18,20 @@ export class HttpComponent implements OnInit {
     this.onFetchData();
   }
 
+  dismissed(): void {
+    this.clicked=!this.clicked;
+  }
+
   onFetchData(): void {
     this.isFetching = true;
     this.httpService.fetchData().subscribe((posts) => {
       this.posts = posts;
+      this.isFetching = false;
+    },(error)=>{
+      this.error = error.message;
+      this.isFetching = false;
     });
-    this.isFetching = false;
+
   }
 
   onSendData(): void {

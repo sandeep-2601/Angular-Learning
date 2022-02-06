@@ -32,8 +32,10 @@ import { FormsComponent } from './forms/forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { FormsAssignmentComponent } from './forms-assignment/forms-assignment';
 import { HttpComponent } from './http/http.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ObservablesComponent } from './observables/observables.component';
+import { AuthInterceptor } from './http/auth-interceptor.service';
+import { LoggingInterceptor } from './http/logging-interceptor.service';
 
 
 @NgModule({
@@ -77,7 +79,16 @@ import { ObservablesComponent } from './observables/observables.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoggingInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
